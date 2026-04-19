@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "c.h"
 #include "ocl.h"
 
 #include <Rinternals.h>
@@ -128,7 +129,7 @@ static size_t gc_high_mark = 0;
    this flags and won't attempt furhter GC until high mark is reached */
 static int trigger_zone = 0;
 
-size_t R2size(SEXP sWhat, int which) {
+static size_t R2size(SEXP sWhat, int which) {
     if (TYPEOF(sWhat) == INTSXP &&
 	XLENGTH(sWhat) >= which && INTEGER(sWhat)[which] >= 0)
 	return (size_t) INTEGER(sWhat)[which];
