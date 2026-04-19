@@ -37,11 +37,11 @@
   only contiguous memory operations are supported on GPU buffers, so if
   the index does not reference a contiguous region then the
   subsetting/assignment will be performed by retrieving the entire
-  buffer and perfroming the operation in R which is very expensive.
+  buffer and performing the operation in R which is very expensive.
 
   Note that unlike regular R objects GPU buffers are by design mutable,
   i.e. the object is only a reference to the GPU memory and thus any
-  modification will affect all refernces. The contents can be emerged into R
+  modification will affect all references. The contents can be emerged into R
   via \code{x[]} at which point the result is a regular R vector and no
   longer tied to the source buffer. Analogously, \code{x[] <- value} is
   the canonical way to replace the entire contents of the buffer where

@@ -45,7 +45,7 @@ is.clLocal(x)
   buffer. The actual size will depend on \code{mode}.}
   \item{mode}{string, mode of the buffer (only used to compute the total
     size in bytes). The default is to treat \code{length} as the size in
-    bytes (i.e., \code{"byte"} is aways allowed irrespective of the type
+    bytes (i.e., \code{"byte"} is always allowed irrespective of the type
     of the kernel argument).}
   \item{x}{object}
   \item{\dots}{Ignored}
