@@ -35,8 +35,8 @@ SEXP get_type_description(ClType type)
     case CLT_INT: return Rf_mkString("integer");
     case CLT_FLOAT: return Rf_mkString("single");
     case CLT_DOUBLE: return Rf_mkString("double");
-    default: return R_NilValue;
     }
+    return R_NilValue;
 }
 
 /* Get size of a single element for the given type */
@@ -46,8 +46,8 @@ static size_t get_element_size(ClType type)
     case CLT_INT: return sizeof(cl_int);
     case CLT_FLOAT: return sizeof(cl_float);
     case CLT_DOUBLE: return sizeof(cl_double);
-    default: return 0;
     }
+    return 0;
 }
 
 /* Translate type to corresponding SEXP type */
@@ -57,8 +57,8 @@ static SEXPTYPE get_sexptype(ClType type)
     case CLT_INT: return INTSXP;
     case CLT_FLOAT: return REALSXP;
     case CLT_DOUBLE: return REALSXP;
-    default: return ANYSXP;     // dummy return value
     }
+    return ANYSXP;  // dummy return value
 }
 
 /* FLOAT <-> DOUBLE CONVERSION with NAs */
