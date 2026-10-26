@@ -116,7 +116,6 @@ attribute_visible SEXP ocl_context(SEXP device_exp)
     } else {
       queue = clCreateCommandQueue(ctx, device_id, 0, &last_ocl_error);
     }
-	
     if (!queue)
         ocl_err("clCreateCommandQueue", last_ocl_error);
     queue_exp = Rf_protect(mkCommandQueue(queue));
