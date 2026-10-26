@@ -107,7 +107,7 @@ attribute_visible SEXP ocl_context(SEXP device_exp)
     ctx_exp = Rf_protect(mkContext(ctx));
     Rf_setAttrib(ctx_exp, oclDeviceSymbol, device_exp);
 
-    /* test device for out-of-order queue property */
+    /* test device for out-of-order queue support */
     clGetDeviceInfo(device_id, CL_DEVICE_QUEUE_PROPERTIES, sizeof(queue_properties), &queue_properties, NULL);
 
     /* Add command queue */
