@@ -111,11 +111,8 @@ attribute_visible SEXP ocl_context(SEXP device_exp)
     clGetDeviceInfo(device_id, CL_DEVICE_QUEUE_PROPERTIES, sizeof(queue_properties), &queue_properties, NULL);
 
     /* Add command queue */
-    if (queue_properties & CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE) {
-      queue = clCreateCommandQueue(ctx, device_id, CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE, &last_ocl_error);
-    } else {
-      queue = clCreateCommandQueue(ctx, device_id, 0, &last_ocl_error);
-    }
+    queue_properties &= CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE;
+    queue = clCreateCommandQueue(ctx, device_id, queue_properties, &last_ocl_error);
     if (!queue)
         ocl_err("clCreateCommandQueue", last_ocl_error);
     queue_exp = Rf_protect(mkCommandQueue(queue));
